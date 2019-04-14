@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 LABEL maintainer="citraemu"
-RUN useradd -m -s /bin/bash citra && mkdir -p /tmp/pkgs
+RUN mkdir -p /tmp/pkgs
 COPY install_package.py /tmp/pkgs
 RUN apt-get update && apt-get install -y build-essential wget git python-launchpadlib ccache ninja-build
 RUN cd /tmp/pkgs && python2 install_package.py \
@@ -16,4 +16,3 @@ RUN cd /tmp/pkgs && python2 install_package.py \
     libavformat-dev 7:3.4.4-0ubuntu0.18.04.1 bionic  \
     libswscale-dev 7:3.4.4-0ubuntu0.18.04.1 bionic
 RUN rm -rf /tmp/pkgs
-USER citra
