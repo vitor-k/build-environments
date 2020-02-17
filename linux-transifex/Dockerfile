@@ -1,4 +1,5 @@
-FROM alpine
+FROM debian:buster-slim
 LABEL maintainer="citraemu"
-RUN apk update && apk add build-base cmake python3-dev qt5-qttools-dev qt5-qtmultimedia-dev
+RUN apt-get update && apt-get -y full-upgrade
+RUN apt-get install -y p7zip-full libqt5opengl5-dev qtmultimedia5-dev qttools5-dev qttools5-dev-tools python3-pip cmake
 RUN pip3 install transifex-client
